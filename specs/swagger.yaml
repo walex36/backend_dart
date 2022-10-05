@@ -1,16 +1,73 @@
 openapi: 3.0.0
 info:
   description: "API Backend Dart"
-  version: "1.0.10"
+  version: "1.0.11"
   title: "Semanda do Backend"
 servers:
   - url: http://localhost:4466
     description: Local server
 tags:
+- name: "auth"
+  description: "Access to Auth"
 - name: "user"
   description: "Access to User"
 
 paths:
+  /auth/login:
+    get:
+      tags:
+        - 'auth'
+      summary: login with credentials(email/password)
+      security:
+        - basicAuth : []
+      responses:
+        '200':
+          description: 'success get user'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tokenization'
+        '403':
+          description: 'error connection'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/BackendException'
+        '404':
+          description: 'error connection'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/BackendException'
+  /auth/check_token:
+    get:
+      tags:
+        - 'auth'
+      summary: check bearer token
+      security:
+        - bearerAuth : []
+      responses:
+        '200':
+          description: 'success get user'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    type: string
+        '403':
+          description: 'error connection'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/BackendException'
+        '404':
+          description: 'error connection'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/BackendException'
   /user/{id}:
     get:
       tags:
@@ -40,6 +97,8 @@ paths:
       tags:
         - 'user'
       summary: delete user by id
+      security:
+        - bearerAuth : []
       parameters:
         - in: path
           name: id
@@ -88,6 +147,8 @@ paths:
       tags:
         - 'user'
       summary: create new user
+      security:
+        - bearerAuth : []
       requestBody:
         content:
           application/json:
@@ -112,7 +173,9 @@ paths:
     put:
       tags:
         - 'user'
-      summary: update user
+      summary: update user1
+      security:
+        - bearerAuth: []
       requestBody:
         content:
           application/json:
@@ -136,7 +199,23 @@ paths:
                   $ref: '#/components/schemas/BackendException'
 
 components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "Auth header (Authorization) Access Token"
   schemas:
+    Tokenization:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
     User:
       type: object
       properties:

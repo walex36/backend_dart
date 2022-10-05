@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:backend/src/core/services/database/remote_database.dart';
+import 'package:backend/src/modules/auth/guard/auth_guard.dart';
 import 'package:backend/src/modules/bcrypt/bcrypt_service.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_modular/shelf_modular.dart';
@@ -11,9 +12,9 @@ class UserResource extends Resource {
   List<Route> get routes => [
         Route.get('/user', _getAllUser),
         Route.get('/user/:id', _getUserById),
-        Route.post('/user', _createUser),
-        Route.put('/user', _updateUser),
-        Route.delete('/user/:id', _deletedUser),
+        Route.post('/user', _createUser, middlewares: [AuthGuard()]),
+        Route.put('/user', _updateUser, middlewares: [AuthGuard()]),
+        Route.delete('/user/:id', _deletedUser, middlewares: [AuthGuard()]),
       ];
 
   FutureOr<Response> _getAllUser(Injector injector) async {
