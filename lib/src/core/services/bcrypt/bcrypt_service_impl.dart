@@ -1,4 +1,4 @@
-import 'package:backend/src/modules/bcrypt/bcrypt_service.dart';
+import 'package:backend/src/core/services/bcrypt/bcrypt_service.dart';
 import 'package:bcrypt/bcrypt.dart';
 
 class BCryptServiceImpl implements BCryptService {

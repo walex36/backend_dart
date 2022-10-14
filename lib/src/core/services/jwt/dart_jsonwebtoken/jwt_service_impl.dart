@@ -1,5 +1,5 @@
 import 'package:backend/src/core/services/dot_env/dot_env_service.dart';
-import 'package:backend/src/modules/jwt/jwt_service.dart';
+import 'package:backend/src/core/services/jwt/jwt_service.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
 class JwtServiceImpl implements JwtService {
