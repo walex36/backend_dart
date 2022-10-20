@@ -1,15 +1,9 @@
 import 'package:backend/src/core/services/bcrypt/bcrypt_service.dart';
 import 'package:backend/src/core/services/jwt/jwt_service.dart';
 import 'package:backend/src/core/services/request_extractor/request_extractor.dart';
+import 'package:backend/src/features/auth/datasources/auth_datasource.dart';
 import 'package:backend/src/features/auth/models/tokenization.dart';
-import 'package:backend/src/features/auth/erros/erros.dart';
-
-abstract class AuthDatasource {
-  Future<Map> getIdAndRoleByEmail(String email);
-  Future<String> getRoleById(dynamic id);
-  Future<String> getPasswordById(dynamic id);
-  Future<void> updatePasswordById(dynamic id, String password);
-}
+import 'package:backend/src/core/erros/erros.dart';
 
 class AuthRepository {
   final BCryptService bcrypt;

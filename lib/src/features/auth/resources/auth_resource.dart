@@ -3,9 +3,8 @@ import 'dart:convert';
 
 import 'package:backend/src/core/services/request_extractor/request_extractor.dart';
 import 'package:backend/src/features/auth/guard/auth_guard.dart';
-import 'package:backend/src/core/services/jwt/jwt_service.dart';
 import 'package:backend/src/features/auth/repositories/auth_repository.dart';
-import 'package:backend/src/features/auth/erros/erros.dart';
+import 'package:backend/src/core/erros/erros.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_modular/shelf_modular.dart';
 

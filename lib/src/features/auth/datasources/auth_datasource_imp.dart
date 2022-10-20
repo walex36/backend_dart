@@ -1,5 +1,5 @@
 import 'package:backend/src/core/services/database/remote_database.dart';
-import 'package:backend/src/features/auth/repositories/auth_repository.dart';
+import 'package:backend/src/features/auth/datasources/auth_datasource.dart';
 
 class AuthDatasourceImp implements AuthDatasource {
   final RemoteDatabase database;
