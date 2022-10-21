@@ -31,7 +31,7 @@ Projeto feito para estudo da linguagem dart para o bakcend.
 
 ## Screenshots
 
-![EndPoints](https://drive.google.com/uc?export=view&id=1jUKbIr0bVHksXS4NyGJelBbAYZUNMlAD)
-![Schemas](https://drive.google.com/uc?export=view&id=1ZNlyt3a-LP5sdAAUFgHT_8DhmLgEm9Wz)
+![EndPoints](https://github.com/walex36/backend_dart/blob/master/imgs/endpoints.PNG)
+![Schemas](https://github.com/walex36/backend_dart/blob/master/imgs/schemas.PNG)
 
 
